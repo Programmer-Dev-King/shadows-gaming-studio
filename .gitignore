@@ -1,21 +1,40 @@
-# Node.js
+# Dependencies
 node_modules/
+. pnp
+.pnp.js
 
-# Next.js
-.next/
+# Testing
+coverage/
 
-# Environment Variables
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Misc
-.DS_Store
-.idea/
-.vscode/
-dist/
+# Production
 build/
+dist/
+. next/
+out/
 
-# Prisma Migrations
-migrations/
+# Environment
+.env
+.env.local
+.env. *. local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Prisma
+prisma/dev.db
+prisma/dev.db-journal
+
+# OS
+Thumbs.db
+. DS_Store
