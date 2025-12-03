@@ -1,10 +1,7 @@
-// components/animations/SummoningSequence. tsx
-
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import SoundManager from '@/lib/sounds';
 
 interface SummoningSequenceProps {
   characterName: string;
@@ -19,12 +16,9 @@ export const SummoningSequence: React.FC<SummoningSequenceProps> = ({
   onComplete,
   duration = 2200,
 }) => {
-  const [showText, setShowText] = useState(false);
-  const soundManager = new SoundManager();
+  const [showText, setShowText] = React. useState(false);
 
   useEffect(() => {
-    soundManager.playSound('summoning-jutsu');
-
     const textTimer = setTimeout(() => setShowText(true), 1000);
     const completeTimer = setTimeout(() => onComplete?. (), duration);
 
@@ -34,41 +28,16 @@ export const SummoningSequence: React.FC<SummoningSequenceProps> = ({
     };
   }, [duration, onComplete]);
 
-  const circleVariants = {
-    initial: { scale: 0, opacity: 0, rotate: 0 },
-    animate: {
-      scale: 1,
-      opacity: 1,
-      rotate: 360,
-      transition: { duration: 1.5, ease: 'easeOut' },
-    },
-  };
-
-  const shadowVariants = {
-    initial: { y: 100, opacity: 0 },
-    animate: {
-      y: 0,
-      opacity: 1,
-      transition: { delay: 0.6, duration: 0.8 },
-    },
-  };
-
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-40">
       {/* Summoning Circle */}
       <motion.div
+        initial={{ scale: 0, opacity: 0, rotate: 0 }}
+        animate={{ scale: 1, opacity: 1, rotate: 360 }}
+        transition={{ duration: 1.5, ease: 'easeOut' }}
         className="absolute"
-        variants={circleVariants}
-        initial="initial"
-        animate="animate"
       >
-        <svg
-          width="300"
-          height="300"
-          viewBox="0 0 300 300"
-          className="drop-shadow-lg"
-        >
-          {/* Outer Circle */}
+        <svg width="300" height="300" viewBox="0 0 300 300">
           <circle
             cx="150"
             cy="150"
@@ -78,7 +47,6 @@ export const SummoningSequence: React.FC<SummoningSequenceProps> = ({
             strokeWidth="2"
             opacity="0.8"
           />
-          {/* Inner Circle */}
           <circle
             cx="150"
             cy="150"
@@ -88,7 +56,6 @@ export const SummoningSequence: React.FC<SummoningSequenceProps> = ({
             strokeWidth="1"
             opacity="0.5"
           />
-          {/* Runes */}
           <text
             x="150"
             y="160"
@@ -101,14 +68,14 @@ export const SummoningSequence: React.FC<SummoningSequenceProps> = ({
             ◆ ★ ◆
           </text>
         </svg>
-      </motion. div>
+      </motion.div>
 
       {/* Shadow Rising */}
       <motion.div
         className="relative z-10"
-        variants={shadowVariants}
-        initial="initial"
-        animate="animate"
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.6, duration: 0.8 }}
       >
         <div
           className="w-40 h-64 rounded-lg"
@@ -117,7 +84,7 @@ export const SummoningSequence: React.FC<SummoningSequenceProps> = ({
             boxShadow: `0 0 30px ${summoningColor}`,
           }}
         />
-      </motion. div>
+      </motion.div>
 
       {/* Character Name */}
       {showText && (
