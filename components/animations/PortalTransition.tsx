@@ -1,5 +1,3 @@
-// components/animations/PortalTransition.tsx
-
 'use client';
 
 import React, { useEffect } from 'react';
@@ -10,7 +8,7 @@ interface PortalTransitionProps {
   onComplete?: () => void;
 }
 
-export const PortalTransition: React.FC<PortalTransitionProps> = ({
+export const PortalTransition: React. FC<PortalTransitionProps> = ({
   isActive,
   onComplete,
 }) => {
@@ -25,7 +23,6 @@ export const PortalTransition: React.FC<PortalTransitionProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden">
-      {/* Portal Center */}
       <motion.div
         className="absolute inset-0 flex items-center justify-center"
         initial={{ opacity: 0 }}
@@ -38,21 +35,21 @@ export const PortalTransition: React.FC<PortalTransitionProps> = ({
           initial={{ scale: 0, rotate: 0 }}
           animate={{ scale: 1, rotate: 360 }}
           exit={{ scale: 0 }}
-          transition={{ duration: 1.6 }}
+          transition={{ duration: 1. 6 }}
           style={{
-            boxShadow: '0 0 30px var(--jin-woo-blue)',
+            boxShadow: '0 0 30px #1F6BFF',
           }}
         />
 
         {/* Middle Ring */}
-        <motion.div
+        <motion. div
           className="absolute w-72 h-72 border-2 border-neon-cyan rounded-full"
           initial={{ scale: 0, rotate: 360 }}
           animate={{ scale: 1, rotate: 0 }}
           exit={{ scale: 0 }}
           transition={{ duration: 1.6 }}
           style={{
-            boxShadow: '0 0 20px var(--neon-cyan)',
+            boxShadow: '0 0 20px #37F8FF',
           }}
         />
 
@@ -64,7 +61,7 @@ export const PortalTransition: React.FC<PortalTransitionProps> = ({
           exit={{ scale: 0 }}
           transition={{ duration: 1.6 }}
           style={{
-            boxShadow: '0 0 20px var(--cursed-purple)',
+            boxShadow: '0 0 20px #6F2BFF',
           }}
         />
 
@@ -72,14 +69,14 @@ export const PortalTransition: React.FC<PortalTransitionProps> = ({
         <motion. div
           className="absolute w-32 h-32 bg-gradient-radial from-jin-woo-blue to-transparent rounded-full"
           initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 1, 0.5] }}
+          animate={{ opacity: [0, 1, 0. 5] }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.6 }}
         />
       </motion.div>
 
       {/* Shadow Overlay */}
-      <motion. div
+      <motion.div
         className="absolute inset-0 bg-shadow-black"
         initial={{ opacity: 0 }}
         animate={{ opacity: [0, 0.3, 0] }}
