@@ -1,27 +1,42 @@
+'use client';
+
 import { useEffect } from 'react';
 
-const useKonamiCode = (callback) => {
-  useEffect(() => {
-    const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
-    let index = 0;
+const KONAMI_CODE = [
+  'ArrowUp',
+  'ArrowUp',
+  'ArrowDown',
+  'ArrowDown',
+  'ArrowLeft',
+  'ArrowRight',
+  'ArrowLeft',
+  'ArrowRight',
+  'KeyB',
+  'KeyA',
+];
 
-    const onKeyDown = (event) => {
-      if (event.keyCode === konamiCode[index]) {
-        index++;
-        if (index === konamiCode.length) {
+export default function useKonamiCode(callback: () => void) {
+  useEffect(() => {
+    let konamiIndex = 0;
+
+    const handleKeyPress = (event: KeyboardEvent) => {
+      const key = event.code;
+
+      if (key === KONAMI_CODE[konamiIndex]) {
+        konamiIndex++;
+
+        if (konamiIndex === KONAMI_CODE.length) {
           callback();
-          index = 0;
+          konamiIndex = 0;
         }
       } else {
-        index = 0;
+        konamiIndex = 0;
       }
     };
 
-    window.addEventListener('keydown', onKeyDown);
-    return () => {
-      window.removeEventListener('keydown', onKeyDown);
-    };
+    if (typeof window !== 'undefined') {
+      window.addEventListener('keydown', handleKeyPress);
+      return () => window.removeEventListener('keydown', handleKeyPress);
+    }
   }, [callback]);
-};
-
-export default useKonamiCode;
+}
