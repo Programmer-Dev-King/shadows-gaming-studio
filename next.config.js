@@ -1,5 +1,3 @@
-// next.config.js
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -8,25 +6,15 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**.example.com', // Replace with your remote hostnames
-        port: '',
-        pathname: '/path/to/images/**', // Adjust path as needed
+        hostname: '**',
       },
     ],
   },
-  webpack: (config) => {
-    // Optimization settings
-    config.optimization = {
-      ...config.optimization,
-      splitChunks: {
-        ...config.optimization.splitChunks,
-        chunks: 'all',
-      },
-    };
-    return config;
-  },
   experimental: {
-    optimizePackageImports: ['three'],
+    optimizePackageImports: ['framer-motion', 'gsap'],
+  },
+  env: {
+    NEXT_PUBLIC_APP_NAME: 'Shadows Gaming Studio',
   },
 };
 
