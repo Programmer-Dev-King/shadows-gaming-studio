@@ -1,1 +1,29 @@
-{\n  "compilerOptions": {\n    "target": "es5",\n    "jsx": "preserve",\n    "module": "esnext",\n    "moduleResolution": "bundler",\n    "strict": true,\n    "baseUrl": ".",\n    "paths": {\n      "@/*": ["*"]\n    }\n  }\n}
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "bundler",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [". /*"]
+    },
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true
+  },
+  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts"],
+  "exclude": ["node_modules"]
+}
