@@ -1,7 +1,12 @@
-/**
- * @type {import('tailwindcss').Config}
- */
-const tailwindConfig = {
+// tailwind.config.ts
+
+import type { Config } from 'tailwindcss';
+
+const config: Config = {
+  content: [
+    './app/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
     extend: {
       colors: {
@@ -16,51 +21,23 @@ const tailwindConfig = {
         'icy-blue': '#A5C7FF',
       },
       fontFamily: {
-        heading: ['YourHeadingFont', 'sans-serif'],
-        body: ['YourBodyFont', 'sans-serif'],
-        hud: ['YourHudFont', 'sans-serif'],
+        heading: ['Montserrat', 'Bebas Neue', 'Anton', 'sans-serif'],
+        body: ['Poppins', 'Inter', 'sans-serif'],
+        hud: ['Oxanium', 'monospace'],
       },
       animation: {
-        glow: 'glow 1s infinite',
-        'shadow-rise': 'shadowRise 1s forwards',
-        'gate-open': 'gateOpen 1s forwards',
-        glitch: 'glitch 1s infinite',
-        'typewriter': 'typewriter 4s steps(10) forwards',
-        'portal-spin': 'portalSpin 2s linear infinite',
+        'gate-open': 'gateOpen 2s ease-out forwards',
+        'shadow-rise': 'shadowRise 1. 2s ease-out forwards',
+        'portal-vortex': 'portalVortex 1.6s ease-in-out forwards',
+        'glitch': 'glitch 0.3s ease-in-out',
+        'typewriter': 'typewriter 3s steps(40, end) forwards',
       },
-      keyframes: {
-        glow: {
-          '0%, 100%': { opacity: '0.2' },
-          '50%': { opacity: '1' },
-        },
-        shadowRise: {
-          '0%': { transform: 'translateY(0)', opacity: '0.5' },
-          '100%': { transform: 'translateY(-10px)', opacity: '1' },
-        },
-        gateOpen: {
-          '0%': { transform: 'translateY(-50%)' },
-          '100%': { transform: 'translateY(0)' },
-        },
-        glitch: {
-          '0%': { clipPath: 'inset(0)' },
-          '25%': { clipPath: 'inset(20% 0 80% 0)' },
-          '50%': { clipPath: 'inset(10% 0 90% 0)' },
-          '75%': { clipPath: 'inset(0)' },
-          '100%': { clipPath: 'inset(0)' },
-        },
-        typewriter: {
-          '0%': { width: '0' },
-          '100%': { width: '100%' },
-        },
-        portalSpin: {
-          '0%': { transform: 'rotate(0deg)' },
-          '100%': { transform: 'rotate(360deg)' },
-        },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
     },
   },
-  variants: {},
   plugins: [],
 };
 
-module.exports = tailwindConfig;
+export default config;
