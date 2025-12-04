@@ -1,40 +1,55 @@
 // lib/sounds.ts
 
 class SoundManager {
-    private audioFiles: { [key: string]: HTMLAudioElement } = {};
+  private audioContext: AudioContext | null = null;
+  private audioFiles: Map<string, AudioBuffer> = new Map();
+  private isEnabled: boolean = true;
 
-    constructor() {
-        this.loadSounds();
+  constructor() {
+    if (typeof window !== 'undefined') {
+      this.audioContext = new (window. AudioContext || (window as any).webkitAudioContext)();
+    }
+  }
+
+  async loadSound(name: string, url: string): Promise<void> {
+    if (!this. audioContext) return;
+
+    try {
+      const response = await fetch(url);
+      const arrayBuffer = await response.arrayBuffer();
+      const audioBuffer = await this. audioContext.decodeAudioData(arrayBuffer);
+      this. audioFiles.set(name, audioBuffer);
+    } catch (error) {
+      console.warn(`Failed to load sound: ${name}`);
+    }
+  }
+
+  playSound(name: string): void {
+    if (!this.isEnabled || !this.audioContext) return;
+
+    const audioBuffer = this. audioFiles.get(name);
+    if (! audioBuffer) {
+      console.warn(`Sound not found: ${name}`);
+      return;
     }
 
-    private loadSounds() {
-        const sounds = [
-            'gate-opening',
-            'portal-enter',
-            'summoning-jutsu',
-            'glitch-effect',
-            'button-click',
-            'page-transition',
-            'chakra-burst',
-            'seal-activate',
-            'level-up',
-            'error-sound'
-        ];
-        
-        sounds.forEach(sound => {
-            this.audioFiles[sound] = new Audio(`path/to/sounds/${sound}.mp3`);
-        });
+    try {
+      const source = this.audioContext.createBufferSource();
+      source.buffer = audioBuffer;
+      source. connect(this.audioContext.destination);
+      source.start(0);
+    } catch (error) {
+      console.error(`Failed to play sound: ${name}`, error);
     }
+  }
 
-    playSound(sound: string) {
-        const audio = this.audioFiles[sound];
-        if (audio) {
-            audio.currentTime = 0; // Reset to start
-            audio.play();
-        } else {
-            console.warn(`Sound ${sound} not found!`);
-        }
-    }
+  setEnabled(enabled: boolean): void {
+    this.isEnabled = enabled;
+  }
+
+  isAudioEnabled(): boolean {
+    return this.isEnabled;
+  }
 }
 
-export default SoundManager;
+export default new SoundManager();
