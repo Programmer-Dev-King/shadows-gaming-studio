@@ -1,14 +1,20 @@
 {
   "name": "shadows-gaming-studio",
   "version": "1.0.0",
-  "description": "Anime AAA Gaming Studio Website",
+  "description": "Ascension of Shadows - Anime AAA Gaming Studio Website",
+  "author": "Dev Kingson",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "type-check": "tsc --noEmit",
     "prisma:migrate": "prisma migrate dev",
-    "prisma:studio": "prisma studio"
+    "prisma:studio": "prisma studio",
+    "prisma:push": "prisma db push",
+    "prisma:reset": "prisma migrate reset"
   },
   "dependencies": {
     "next": "^14.0.0",
@@ -17,23 +23,24 @@
     "framer-motion": "^10.16.0",
     "gsap": "^3.12.0",
     "next-auth": "^5.0.0",
-    "prisma": "^5.0.0",
-    "@prisma/client": "^5.0.0",
-    "bcrypt": "^5.1. 0",
-    "three": "^r152.0.0",
-    "@react-three/fiber": "^8.14.0",
-    "@react-three/drei": "^9.87.0",
-    "tailwindcss": "^3. 3.0",
-    "autoprefixer": "^10.4.0",
-    "postcss": "^8.4.0"
+    "@prisma/client": "^5.7.0",
+    "bcrypt": "^5.1.0",
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "@types/react": "^18. 2.0",
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
-    "typescript": "^5.0.0",
-    "eslint": "^8.50.0",
-    "eslint-config-next": "^14.0. 0",
-    "prettier": "^3.0.0"
+    "@types/bcrypt": "^5. 0.2",
+    "prettier": "^3.1.0",
+    "eslint": "^8.55.0",
+    "eslint-config-next": "^14.0.0",
+    "prisma": "^5.7. 0",
+    "tailwindcss": "^3. 4.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
