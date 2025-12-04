@@ -13,13 +13,20 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const existingUser = await prisma.user. findUnique({
+    if (password.length < 6) {
+      return NextResponse. json(
+        { error: 'Password must be at least 6 characters' },
+        { status: 400 }
+      );
+    }
+
+    const existingUser = await prisma.user.findUnique({
       where: { email },
     });
 
     if (existingUser) {
       return NextResponse.json(
-        { error: 'User already exists' },
+        { error: 'Email already registered' },
         { status: 409 }
       );
     }
@@ -31,18 +38,30 @@ export async function POST(request: NextRequest) {
         name,
         email,
         password: hashedPassword,
-        role: 'user',
+        role: 'USER',
+      },
+    });
+
+    // Log the signup
+    await prisma.log.create({
+      data: {
+        userId: user.id,
+        action: 'USER_SIGNUP',
+        details: `New user registered: ${email}`,
       },
     });
 
     return NextResponse.json(
-      { message: 'User created successfully', user: { id: user.id, email: user.email, name: user.name } },
+      {
+        message: 'User created successfully',
+        user: { id: user.id, email: user.email, name: user.name },
+      },
       { status: 201 }
     );
   } catch (error) {
-    console. error('Signup error:', error);
+    console.error('Signup error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'An error occurred during signup' },
       { status: 500 }
     );
   }
