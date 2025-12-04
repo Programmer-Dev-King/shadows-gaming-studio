@@ -28,9 +28,20 @@ export default function useKonamiCode(callback: () => void) {
         if (konamiIndex === KONAMI_CODE.length) {
           callback();
           konamiIndex = 0;
+          
+          // Visual feedback
+          console.log('🔓 KONAMI CODE ACTIVATED - Shadow Realm Unlocked!');
+          
+          // Create celebration effect
+          if (typeof window !== 'undefined') {
+            document.dispatchEvent(new CustomEvent('konamiUnlocked'));
+          }
         }
       } else {
         konamiIndex = 0;
+        if (key === KONAMI_CODE[0]) {
+          konamiIndex = 1;
+        }
       }
     };
 
