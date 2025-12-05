@@ -23,17 +23,17 @@ export const SummoningSequenceAdvanced: React.FC<SummoningSequenceAdvancedProps>
   const [phase, setPhase] = useState<'initial' | 'circle' | 'rise' | 'reveal' | 'complete'>('initial');
 
   useEffect(() => {
-    const timeline = [
-      { time: 0, phase: 'circle' as const },
-      { time: 800, phase: 'rise' as const },
-      { time: 1400, phase: 'reveal' as const },
-      { time: duration, phase: 'complete' as const },
+    const timeline: Array<{ time: number; phase: 'circle' | 'rise' | 'reveal' | 'complete' }> = [
+      { time: 0, phase: 'circle' },
+      { time: 800, phase: 'rise' },
+      { time: 1400, phase: 'reveal' },
+      { time: duration, phase: 'complete' },
     ];
 
-    timeline.forEach(({ time, ph }) => {
+    timeline.forEach(({ time, phase: timelinePhase }) => {
       setTimeout(() => {
-        setPhase(ph);
-        if (ph === 'complete') {
+        setPhase(timelinePhase);
+        if (timelinePhase === 'complete') {
           onComplete?.();
         }
       }, time);
@@ -87,7 +87,7 @@ export const SummoningSequenceAdvanced: React.FC<SummoningSequenceAdvancedProps>
             ◆ ★ ◆
           </text>
         </svg>
-      </motion. div>
+      </motion.div>
 
       {/* SHADOW RISING - Center */}
       <motion.div
@@ -149,7 +149,7 @@ export const SummoningSequenceAdvanced: React.FC<SummoningSequenceAdvancedProps>
                 y: Math.sin((i / 12) * Math.PI * 2) * 150,
                 opacity: 0,
               }}
-              transition={{ duration: 1. 5, delay: 0.3 }}
+              transition={{ duration: 1.5, delay: 0.3 }}
             />
           ))}
         </>

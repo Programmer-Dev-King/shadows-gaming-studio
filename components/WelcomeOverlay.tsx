@@ -72,7 +72,7 @@ export const WelcomeOverlay: React.FC<WelcomeOverlayProps> = ({
             {/* Subtitle */}
             <motion.p
               className="text-icy-blue text-lg mt-8 animate-pulse"
-              animate={{ opacity: [0. 5, 1] }}
+              animate={{ opacity: [0.5, 1] }}
               transition={{ duration: 1, repeat: Infinity }}
             >
               Press any key to continue...

@@ -54,7 +54,7 @@ export const GateOpeningAdvanced: React.FC<GateOpeningAdvancedProps> = ({
         }}
         initial={{ opacity: 0 }}
         animate={{
-          opacity: animationPhase !== 'initial' ? [0. 1, 0.3, 0.1] : 0,
+          opacity: animationPhase !== 'initial' ? [0.1, 0.3, 0.1] : 0,
         }}
         transition={{ duration: 2 }}
       />
@@ -67,7 +67,7 @@ export const GateOpeningAdvanced: React.FC<GateOpeningAdvancedProps> = ({
           x: animationPhase === 'gateMovement' ? -500 : 0,
         }}
         transition={{
-          duration: 1. 6,
+          duration: 1.6,
           ease: 'easeInOut',
           delay: 0,
         }}
@@ -104,7 +104,7 @@ export const GateOpeningAdvanced: React.FC<GateOpeningAdvancedProps> = ({
         className="absolute bottom-0 left-1/2 w-96 h-96 -translate-x-1/2"
         initial={{ opacity: 0, scaleY: 0 }}
         animate={{
-          opacity: animationPhase === 'auraShadowRise' ?  [0, 1, 0. 7] : 0,
+          opacity: animationPhase === 'auraShadowRise' ?  [0, 1, 0.7] : 0,
           scaleY: animationPhase === 'auraShadowRise' ? 1 : 0,
         }}
         transition={{
@@ -123,10 +123,10 @@ export const GateOpeningAdvanced: React.FC<GateOpeningAdvancedProps> = ({
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{
           opacity: animationPhase === 'textGlow' ? 1 : 0,
-          scale: animationPhase === 'textGlow' ? 1 : 0. 5,
+          scale: animationPhase === 'textGlow' ? 1 : 0.5,
         }}
         transition={{
-          duration: 0. 8,
+          duration: 0.8,
           delay: 0.8,
         }}
       >

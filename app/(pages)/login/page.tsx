@@ -54,7 +54,7 @@ export default function LoginPage() {
             ? 'radial-gradient(circle at center, #1F6BFF, transparent)'
             : 'transparent',
         }}
-        transition={{ duration: 1. 2 }}
+        transition={{ duration: 1.2 }}
       />
 
       {/* Shadow Rising Effect */}
@@ -84,7 +84,7 @@ export default function LoginPage() {
             borderColor: phase === 'awakening' ? '#6F2BFF' : phase === 'complete' ? '#8EFFC1' : '#1F6BFF',
             boxShadow:
               phase === 'awakening'
-                ? '0 0 30px rgba(31, 107, 255, 0. 8)'
+                ? '0 0 30px rgba(31, 107, 255, 0.8)'
                 : phase === 'complete'
                 ? '0 0 30px rgba(142, 255, 193, 0.8)'
                 : '0 0 15px rgba(31, 107, 255, 0.5)',
@@ -161,7 +161,7 @@ export default function LoginPage() {
               )}
 
               {/* Submit Button */}
-              <motion. button
+              <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
@@ -169,9 +169,9 @@ export default function LoginPage() {
                 className="w-full bg-jin-woo-blue text-white font-bold py-3 rounded-lg hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all"
               >
                 {isLoading ? (
-                  <motion.span animate={{ opacity: [0. 5, 1] }} transition={{ duration: 0.5, repeat: Infinity }}>
+                  <motion.span animate={{ opacity: [0.5, 1] }} transition={{ duration: 0.5, repeat: Infinity }}>
                     AWAKENING...
-                  </motion. span>
+                  </motion.span>
                 ) : (
                   'LOGIN'
                 )}
@@ -187,7 +187,7 @@ export default function LoginPage() {
               className="text-center py-8"
             >
               <motion.div
-                animate={{ scale: [0.8, 1. 2, 0.8] }}
+                animate={{ scale: [0.8, 1.2, 0.8] }}
                 transition={{ duration: 1, repeat: Infinity }}
                 className="text-6xl mb-4"
               >
@@ -220,7 +220,7 @@ export default function LoginPage() {
             </motion.div>
           )}
         </motion.div>
-      </motion. div>
+      </motion.div>
     </main>
   );
           }

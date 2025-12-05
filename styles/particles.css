@@ -1,0 +1,210 @@
+/* styles/particles.css */
+/* Particle system styles */
+
+.particle-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Particle Types */
+.particle-float {
+  animation: particleFloat 4s ease-in-out infinite;
+}
+
+.particle-sparkle {
+  animation: particleSparkle 2s ease-in-out infinite;
+}
+
+.particle-ember {
+  animation: particleEmber 3s ease-out forwards;
+}
+
+/* Particle Animations */
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translateY(-50px) translateX(20px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-100px) translateX(-10px);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(-150px) translateX(15px);
+    opacity: 0.4;
+  }
+}
+
+@keyframes particleSparkle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+@keyframes particleEmber {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-400px) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Particle Sizes */
+.particle-sm {
+  width: 2px;
+  height: 2px;
+}
+
+.particle-md {
+  width: 4px;
+  height: 4px;
+}
+
+.particle-lg {
+  width: 8px;
+  height: 8px;
+}
+
+/* Particle Colors */
+.particle-blue {
+  background: radial-gradient(circle, #1F6BFF, transparent);
+  box-shadow: 0 0 10px #1F6BFF;
+}
+
+.particle-purple {
+  background: radial-gradient(circle, #6F2BFF, transparent);
+  box-shadow: 0 0 10px #6F2BFF;
+}
+
+.particle-cyan {
+  background: radial-gradient(circle, #37F8FF, transparent);
+  box-shadow: 0 0 10px #37F8FF;
+}
+
+.particle-green {
+  background: radial-gradient(circle, #8EFFC1, transparent);
+  box-shadow: 0 0 10px #8EFFC1;
+}
+
+.particle-orange {
+  background: radial-gradient(circle, #FF6B18, transparent);
+  box-shadow: 0 0 10px #FF6B18;
+}
+
+/* Summoning Circle Particles */
+.summoning-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  animation: summoningOrbit 2s linear infinite;
+}
+
+@keyframes summoningOrbit {
+  from {
+    transform: rotate(0deg) translateX(100px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(100px) rotate(-360deg);
+  }
+}
+
+/* Portal Particles */
+.portal-particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: portalSpin 1.5s ease-out forwards;
+}
+
+@keyframes portalSpin {
+  0% {
+    transform: rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(720deg) translateX(200px);
+    opacity: 0;
+  }
+}
+
+/* Crystal Shards (Dr. Stone style) */
+.crystal-shard {
+  position: absolute;
+  background: linear-gradient(135deg, #8EFFC1, transparent);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  animation: crystalShimmer 2s ease-in-out infinite;
+}
+
+@keyframes crystalShimmer {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+/* Chakra Particles (Naruto style) */
+.chakra-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FF6B18, transparent);
+  animation: chakraBurst 1s ease-out forwards;
+}
+
+@keyframes chakraBurst {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+/* Smoke Effect */
+.smoke-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
+  filter: blur(10px);
+  animation: smokeRise 3s ease-out forwards;
+}
+
+@keyframes smokeRise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-200px) scale(2);
+    opacity: 0;
+  }
+}

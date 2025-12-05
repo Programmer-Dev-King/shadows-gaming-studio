@@ -10,6 +10,7 @@ interface Game {
   title: string;
   description: string;
   status: string;
+  engineType?: string;
 }
 
 interface TeamMember {
@@ -28,7 +29,7 @@ export default function AdminDashboard() {
   const { data: session, status } = useSession();
   const [games, setGames] = useState<Game[]>([]);
   const [team, setTeam] = useState<TeamMember[]>([]);
-  const [messages, setMessages] = useState<WelcomeMessage[]>([]);
+  const [messages, setMessages] = useState<(WelcomeMessage | string)[]>([]);
   const [activeTab, setActiveTab] = useState<'games' | 'team' | 'messages'>('games');
   const [loading, setLoading] = useState(false);
 
@@ -219,9 +220,9 @@ export default function AdminDashboard() {
                     className="glass rounded-lg p-4 border border-crystal-green flex justify-between items-center"
                     whileHover={{ x: 10 }}
                   >
-                    <p className="text-silver-white">{msg.message || msg}</p>
+                    <p className="text-silver-white">{typeof msg === 'string' ? msg : msg.message}</p>
                     <button
-                      onClick={() => handleDeleteMessage(msg.message || msg)}
+                      onClick={() => handleDeleteMessage(typeof msg === 'string' ? msg : msg.message)}
                       className="px-4 py-2 bg-cursed-purple text-white rounded hover:bg-cursed-purple/80"
                     >
                       Delete

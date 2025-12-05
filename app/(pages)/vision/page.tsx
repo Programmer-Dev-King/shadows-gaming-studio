@@ -7,14 +7,14 @@ export default function VisionPage() {
   const [phase, setPhase] = useState<'initial' | 'crack' | 'transform' | 'complete'>('initial');
 
   useEffect(() => {
-    const timeline = [
-      { time: 0, phase: 'crack' as const },
-      { time: 600, phase: 'transform' as const },
-      { time: 1400, phase: 'complete' as const },
+    const timeline: Array<{ time: number; phase: 'crack' | 'transform' | 'complete' }> = [
+      { time: 0, phase: 'crack' },
+      { time: 600, phase: 'transform' },
+      { time: 1400, phase: 'complete' },
     ];
 
-    timeline.forEach(({ time, ph }) => {
-      setTimeout(() => setPhase(ph), time);
+    timeline.forEach(({ time, phase: timelinePhase }) => {
+      setTimeout(() => setPhase(timelinePhase), time);
     });
   }, []);
 
@@ -22,7 +22,7 @@ export default function VisionPage() {
     <main className="min-h-screen bg-gradient-to-b from-shadow-black via-abyss-blue to-shadow-black py-20 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Animated Stone Tablet - Crack & Transform */}
-        {phase !== 'complete' && (
+        {(phase === 'initial' || phase === 'crack' || phase === 'transform') && (
           <div className="fixed inset-0 z-40 flex items-center justify-center">
             <motion.div
               className="relative w-96 h-96"
@@ -72,11 +72,11 @@ export default function VisionPage() {
               <motion.div
                 className="absolute inset-0 bg-gradient-to-br from-neon-cyan to-jin-woo-blue rounded-lg"
                 animate={{
-                  opacity: phase === 'transform' || phase === 'complete' ? 1 : 0,
-                  scale: phase === 'transform' ? 1.1 : phase === 'complete' ? 1 : 0. 8,
+                  opacity: phase === 'transform' ? 1 : 0,
+                  scale: phase === 'transform' ? 1.1 : 0.8,
                 }}
                 style={{
-                  boxShadow: phase === 'transform' || phase === 'complete' ? '0 0 40px #37F8FF' : 'none',
+                  boxShadow: phase === 'transform' ? '0 0 40px #37F8FF' : 'none',
                 }}
               >
                 {phase === 'transform' && (
@@ -167,16 +167,16 @@ export default function VisionPage() {
                   >
                     <h3 className="font-bold text-lg mb-2">{pillar.title}</h3>
                     <p className="text-silver-white text-sm">{pillar.desc}</p>
-                  </motion. div>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
 
             {/* Technology Section */}
-            <motion. div
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0. 6 }}
+              transition={{ delay: 0.6 }}
             >
               <h2 className="anime-text text-4xl mb-8" style={{ textShadow: '0 0 20px #1F6BFF' }}>
                 Technology Stack
