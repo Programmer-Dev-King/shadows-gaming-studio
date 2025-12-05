@@ -1,0 +1,132 @@
+/* styles/particles.css - Particle System Styles */
+
+.particle-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.particle-float {
+  animation: particleFloat 4s ease-in-out infinite;
+}
+
+.particle-sparkle {
+  animation: particleSparkle 2s ease-in-out infinite;
+}
+
+.particle-ember {
+  animation: particleEmber 3s ease-out infinite;
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateY(-30px) translateX(10px);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-50px) translateX(-10px);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateY(-20px) translateX(15px);
+    opacity: 0.7;
+  }
+}
+
+@keyframes particleSparkle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+@keyframes particleEmber {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-200px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+/* Shadow Particles */
+.shadow-particle {
+  background: radial-gradient(circle, rgba(31, 107, 255, 0.8), transparent);
+  filter: blur(2px);
+}
+
+/* Cursed Energy Particles */
+.cursed-particle {
+  background: radial-gradient(circle, rgba(111, 43, 255, 0.8), transparent);
+  filter: blur(1px);
+}
+
+/* Energy Ring */
+.energy-ring {
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  animation: energyRing 2s linear infinite;
+}
+
+@keyframes energyRing {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Summoning Circle */
+.summoning-circle {
+  border: 3px solid currentColor;
+  border-radius: 50%;
+  animation: summoningCircle 3s linear infinite;
+}
+
+@keyframes summoningCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Portal Ripple */
+.portal-ripple {
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  animation: portalRipple 1.5s ease-out infinite;
+}
+
+@keyframes portalRipple {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}

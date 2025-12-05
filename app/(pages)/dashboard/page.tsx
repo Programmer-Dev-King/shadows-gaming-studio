@@ -53,7 +53,7 @@ export default function DashboardPage() {
           <p className="text-icy-blue text-lg">
             Welcome back, {session?.user?.name || 'Shadow'} 
           </p>
-        </motion. div>
+        </motion.div>
 
         {/* Power Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
@@ -63,7 +63,7 @@ export default function DashboardPage() {
             { label: 'Achievements', value: stats.achievements, color: 'crystal-green', unit: '' },
             { label: 'Playtime', value: stats.playtime, color: 'chakra-orange', unit: '' },
           ].map((stat, i) => (
-            <motion. div
+            <motion.div
               key={i}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -124,14 +124,14 @@ export default function DashboardPage() {
               className="w-full mt-6 px-4 py-3 bg-jin-woo-blue text-white rounded-lg font-bold hover:shadow-lg"
             >
               EDIT PROFILE
-            </motion. button>
+            </motion.button>
           </motion.div>
 
           {/* Quick Actions */}
-          <motion. div
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0. 5 }}
+            transition={{ delay: 0.5 }}
             className="glass rounded-lg p-8 border-2 border-cursed-purple"
           >
             <h2 className="text-2xl font-bold text-cursed-purple mb-6">Quick Actions</h2>
@@ -156,7 +156,7 @@ export default function DashboardPage() {
                 Game Settings
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1. 05, x: 10 }}
+                whileHover={{ scale: 1.05, x: 10 }}
                 className="w-full px-4 py-3 bg-chakra-orange/30 border border-chakra-orange text-chakra-orange rounded-lg font-bold hover:bg-chakra-orange/50"
               >
                 Support
@@ -197,7 +197,7 @@ export default function DashboardPage() {
                 </div>
                 <motion.div
                   className="w-2 h-2 rounded-full bg-crystal-green"
-                  animate={{ opacity: [0. 5, 1] }}
+                  animate={{ opacity: [0.5, 1] }}
                   transition={{ duration: 1, repeat: Infinity }}
                 />
               </motion.div>

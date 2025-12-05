@@ -2,12 +2,11 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { auth } from '@/lib/auth';
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
+    const session = await auth();
 
     if (!session) {
       return NextResponse.json(
@@ -16,8 +15,9 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    const user = session.user as any;
     const logs = await prisma.log.findMany({
-      where: session.user?.role === 'ADMIN' ? {} : { userId: session.user?. id },
+      where: user?.role === 'ADMIN' ? {} : { userId: user?.id },
       orderBy: { timestamp: 'desc' },
       take: 50,
     });
@@ -33,9 +33,9 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
+    const session = await auth();
 
-    if (! session) {
+    if (!session) {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 401 }
@@ -44,16 +44,17 @@ export async function POST(request: NextRequest) {
 
     const { action, details } = await request.json();
 
-    if (! action) {
+    if (!action) {
       return NextResponse.json(
         { error: 'Missing action field' },
         { status: 400 }
       );
     }
 
+    const user = session.user as any;
     const log = await prisma.log.create({
       data: {
-        userId: session.user?.id,
+        userId: user?.id,
         action,
         details,
       },
@@ -66,4 +67,4 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
-  }
+}

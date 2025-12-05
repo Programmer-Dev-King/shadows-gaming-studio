@@ -7,18 +7,18 @@ class SoundManager {
 
   constructor() {
     if (typeof window !== 'undefined') {
-      this.audioContext = new (window. AudioContext || (window as any).webkitAudioContext)();
+      this.audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
     }
   }
 
   async loadSound(name: string, url: string): Promise<void> {
-    if (!this. audioContext) return;
+    if (!this.audioContext) return;
 
     try {
       const response = await fetch(url);
       const arrayBuffer = await response.arrayBuffer();
-      const audioBuffer = await this. audioContext.decodeAudioData(arrayBuffer);
-      this. audioFiles.set(name, audioBuffer);
+      const audioBuffer = await this.audioContext.decodeAudioData(arrayBuffer);
+      this.audioFiles.set(name, audioBuffer);
     } catch (error) {
       console.warn(`Failed to load sound: ${name}`);
     }
@@ -27,7 +27,7 @@ class SoundManager {
   playSound(name: string): void {
     if (!this.isEnabled || !this.audioContext) return;
 
-    const audioBuffer = this. audioFiles.get(name);
+    const audioBuffer = this.audioFiles.get(name);
     if (! audioBuffer) {
       console.warn(`Sound not found: ${name}`);
       return;

@@ -69,6 +69,7 @@ model WelcomeMessage {
 model Log {
   id        String   @id @default(cuid())
   userId    String? 
+  user      User?    @relation(fields: [userId], references: [id])
   action    String
   details   String? 
   timestamp DateTime @default(now())
