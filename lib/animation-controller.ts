@@ -57,14 +57,8 @@ export const ANIMATION_SEQUENCES: Record<AnimationPhase, AnimationSequence> = {
 };
 
 export class AnimationController {
-  private soundManager: SoundManager;
   private currentPhase: AnimationPhase = 'idle';
   private isPlaying = false;
-  private animationStartTime = 0;
-
-  constructor() {
-    this. soundManager = new SoundManager();
-  }
 
   playSequence(phase: AnimationPhase, onComplete?: () => void): void {
     const sequence = ANIMATION_SEQUENCES[phase];
@@ -73,7 +67,6 @@ export class AnimationController {
 
     this.currentPhase = phase;
     this.isPlaying = true;
-    this.animationStartTime = Date. now();
 
     if (sequence.sound) {
       this.playSoundForPhase(phase);
@@ -82,22 +75,22 @@ export class AnimationController {
     setTimeout(() => {
       this.isPlaying = false;
       onComplete?.();
-    }, sequence. duration + sequence.delay);
+    }, sequence.duration + sequence.delay);
   }
 
   private playSoundForPhase(phase: AnimationPhase): void {
     switch (phase) {
       case 'gate':
-        this.soundManager.playSound('gate-opening');
+        SoundManager.playSound('gate-opening');
         break;
       case 'portal':
-        this. soundManager.playSound('portal-enter');
+        SoundManager.playSound('portal-enter');
         break;
       case 'summoning':
-        this.soundManager.playSound('summoning-jutsu');
+        SoundManager.playSound('summoning-jutsu');
         break;
       case 'transition':
-        this.soundManager.playSound('page-transition');
+        SoundManager.playSound('page-transition');
         break;
     }
   }
@@ -111,7 +104,7 @@ export class AnimationController {
   }
 
   skipAnimation(): void {
-    this. isPlaying = false;
+    this.isPlaying = false;
   }
 }
 

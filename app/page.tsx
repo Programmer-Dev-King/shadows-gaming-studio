@@ -100,7 +100,7 @@ export default function Home() {
               className="flex flex-wrap gap-6 justify-center mb-12"
             >
               <motion.button
-                whileHover={{ scale: 1. 05 }}
+                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleNavigate('/about')}
                 className="px-8 py-4 bg-jin-woo-blue text-white font-bold rounded-lg hover:shadow-lg transition-all"
@@ -110,7 +110,7 @@ export default function Home() {
 
               <motion.button
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0. 95 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => handleNavigate('/vision')}
                 className="px-8 py-4 bg-cursed-purple text-white font-bold rounded-lg hover:shadow-lg transition-all"
               >
@@ -163,7 +163,7 @@ export default function Home() {
                 </motion.div>
 
                 {/* Mission Card */}
-                <motion. div
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
@@ -214,7 +214,7 @@ export default function Home() {
                 style={{ textShadow: '0 0 20px #6F2BFF' }}
               >
                 OUR GAMES
-              </motion. h2>
+              </motion.h2>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {[1, 2, 3].map((i) => (
@@ -256,8 +256,8 @@ export default function Home() {
                     className="px-8 py-4 bg-jin-woo-blue text-white font-bold rounded-lg"
                   >
                     SIGN UP
-                  </motion. button>
-                  <motion. button
+                  </motion.button>
+                  <motion.button
                     whileHover={{ scale: 1.05 }}
                     onClick={() => handleNavigate('/contact')}
                     className="px-8 py-4 border-2 border-jin-woo-blue text-jin-woo-blue font-bold rounded-lg hover:bg-jin-woo-blue/10"

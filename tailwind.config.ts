@@ -27,7 +27,7 @@ const config: Config = {
       },
       animation: {
         'gate-open': 'gateOpen 2s ease-out forwards',
-        'shadow-rise': 'shadowRise 1. 2s ease-out forwards',
+        'shadow-rise': 'shadowRise 1.2s ease-out forwards',
         'portal-vortex': 'portalVortex 1.6s ease-in-out forwards',
         'glitch': 'glitch 0.3s ease-in-out',
         'typewriter': 'typewriter 3s steps(40, end) forwards',

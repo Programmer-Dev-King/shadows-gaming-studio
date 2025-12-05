@@ -2,15 +2,14 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { auth } from '@/lib/auth';
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     const team = await prisma.teamMember.findMany({
       orderBy: { joinDate: 'desc' },
     });
-    return NextResponse. json(team);
+    return NextResponse.json(team);
   } catch (error) {
     return NextResponse.json(
       { error: 'Failed to fetch team' },
@@ -21,9 +20,9 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
+    const session = await auth();
 
-    if (!session || session.user?.role !== 'ADMIN') {
+    if (!session || (session.user as any)?.role !== 'ADMIN') {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 401 }

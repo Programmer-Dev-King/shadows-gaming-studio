@@ -46,7 +46,7 @@ export default function ShadowRealmPage() {
 
           <motion.p
             className="text-icy-blue text-xl mb-8"
-            animate={{ opacity: [0. 5, 1] }}
+            animate={{ opacity: [0.5, 1] }}
             transition={{ duration: 1, repeat: Infinity }}
           >
             Shadow Realm Detected
@@ -98,7 +98,7 @@ export default function ShadowRealmPage() {
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Page Header */}
-        <motion. div
+        <motion.div
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -120,10 +120,10 @@ export default function ShadowRealmPage() {
           </motion.h1>
           <p className="text-neon-cyan text-2xl mb-2">The Inner Sanctum</p>
           <p className="text-icy-blue">Your true power awakens here</p>
-        </motion. div>
+        </motion.div>
 
         {/* Welcome Message */}
-        <motion. div
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
@@ -168,7 +168,7 @@ export default function ShadowRealmPage() {
         </div>
 
         {/* Achievements Section */}
-        <motion. div
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
@@ -237,7 +237,7 @@ export default function ShadowRealmPage() {
           className="mt-12 text-center"
         >
           <motion.button
-            whileHover={{ scale: 1. 05 }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => router.push('/')}
             className="px-8 py-4 bg-cursed-purple text-white font-bold rounded-lg hover:shadow-lg"

@@ -87,7 +87,7 @@ export const SummoningSequenceAdvanced: React.FC<SummoningSequenceAdvancedProps>
             ◆ ★ ◆
           </text>
         </svg>
-      </motion. div>
+      </motion.div>
 
       {/* SHADOW RISING - Center */}
       <motion.div
@@ -145,11 +145,11 @@ export const SummoningSequenceAdvanced: React.FC<SummoningSequenceAdvancedProps>
                 opacity: 1,
               }}
               animate={{
-                x: Math.cos((i / 12) * Math. PI * 2) * 150,
+                x: Math.cos((i / 12) * Math.PI * 2) * 150,
                 y: Math.sin((i / 12) * Math.PI * 2) * 150,
                 opacity: 0,
               }}
-              transition={{ duration: 1. 5, delay: 0.3 }}
+              transition={{ duration: 1.5, delay: 0.3 }}
             />
           ))}
         </>

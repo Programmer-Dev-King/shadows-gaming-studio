@@ -10,6 +10,7 @@ interface Game {
   title: string;
   description: string;
   status: string;
+  engineType?: string;
 }
 
 interface TeamMember {
@@ -19,16 +20,16 @@ interface TeamMember {
   summoningColor: string;
 }
 
-interface WelcomeMessage {
-  id: number;
+type WelcomeMessageType = {
+  id?: number;
   message: string;
-}
+} | string;
 
 export default function AdminDashboard() {
   const { data: session, status } = useSession();
   const [games, setGames] = useState<Game[]>([]);
   const [team, setTeam] = useState<TeamMember[]>([]);
-  const [messages, setMessages] = useState<WelcomeMessage[]>([]);
+  const [messages, setMessages] = useState<WelcomeMessageType[]>([]);
   const [activeTab, setActiveTab] = useState<'games' | 'team' | 'messages'>('games');
   const [loading, setLoading] = useState(false);
 
@@ -213,21 +214,24 @@ export default function AdminDashboard() {
               </div>
 
               <div className="space-y-4">
-                {messages. map((msg, idx) => (
-                  <motion.div
-                    key={idx}
-                    className="glass rounded-lg p-4 border border-crystal-green flex justify-between items-center"
-                    whileHover={{ x: 10 }}
-                  >
-                    <p className="text-silver-white">{msg.message || msg}</p>
-                    <button
-                      onClick={() => handleDeleteMessage(msg.message || msg)}
-                      className="px-4 py-2 bg-cursed-purple text-white rounded hover:bg-cursed-purple/80"
+                {messages.map((msg, idx) => {
+                  const messageText = typeof msg === 'string' ? msg : msg.message;
+                  return (
+                    <motion.div
+                      key={idx}
+                      className="glass rounded-lg p-4 border border-crystal-green flex justify-between items-center"
+                      whileHover={{ x: 10 }}
                     >
-                      Delete
-                    </button>
-                  </motion.div>
-                ))}
+                      <p className="text-silver-white">{messageText}</p>
+                      <button
+                        onClick={() => handleDeleteMessage(messageText)}
+                        className="px-4 py-2 bg-cursed-purple text-white rounded hover:bg-cursed-purple/80"
+                      >
+                        Delete
+                      </button>
+                    </motion.div>
+                  );
+                })}
               </div>
             </motion.div>
           )}

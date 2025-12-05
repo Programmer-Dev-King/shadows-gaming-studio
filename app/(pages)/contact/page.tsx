@@ -24,7 +24,7 @@ export default function ContactPage() {
     <main className="min-h-screen bg-gradient-to-b from-shadow-black via-abyss-blue to-shadow-black py-20 px-4">
       <div className="max-w-2xl mx-auto">
         {/* Page Header */}
-        <motion. div
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
@@ -40,7 +40,7 @@ export default function ContactPage() {
 
         {/* Chakra Burst Animation on Submit */}
         {submitted && (
-          <motion. div
+          <motion.div
             className="fixed inset-0 pointer-events-none z-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -61,7 +61,7 @@ export default function ContactPage() {
                 }}
                 animate={{
                   x: Math.cos((i / 8) * Math.PI * 2) * 300,
-                  y: Math. sin((i / 8) * Math.PI * 2) * 300,
+                  y: Math.sin((i / 8) * Math.PI * 2) * 300,
                   opacity: 0,
                 }}
                 transition={{ duration: 1, ease: 'easeOut' }}
@@ -92,7 +92,7 @@ export default function ContactPage() {
             </motion.div>
 
             {/* Email Field */}
-            <motion. div whileHover={{ scale: 1.02 }}>
+            <motion.div whileHover={{ scale: 1.02 }}>
               <label className="block text-silver-white mb-2 font-semibold">Email</label>
               <input
                 type="email"
@@ -115,7 +115,7 @@ export default function ContactPage() {
                 className="w-full bg-shadow-black/50 border-2 border-chakra-orange rounded px-4 py-3 text-white focus:outline-none focus:border-neon-cyan focus:shadow-lg transition-all"
                 required
               />
-            </motion. div>
+            </motion.div>
 
             {/* Message Field */}
             <motion.div whileHover={{ scale: 1.02 }}>
@@ -164,7 +164,7 @@ export default function ContactPage() {
             { title: 'Discord', value: 'Join our server', icon: '💬' },
             { title: 'Twitter', value: '@ShadowsGaming', icon: '𝕏' },
           ].map((item, i) => (
-            <motion. div
+            <motion.div
               key={i}
               whileHover={{ scale: 1.05 }}
               className="glass rounded-lg p-6 border-2 border-neon-cyan text-center"

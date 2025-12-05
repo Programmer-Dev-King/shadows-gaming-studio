@@ -20,7 +20,7 @@ export class AdvancedAnimationController {
 
     // Play all sounds for sequence
     sequence.sounds.forEach((sound) => {
-      this. playSound(sound);
+      this.playSound(sound);
     });
 
     // Execute stacked steps
@@ -38,7 +38,7 @@ export class AdvancedAnimationController {
     }
 
     // Final wait for total sequence duration
-    const elapsed = Date.now() - this. startTime;
+    const elapsed = Date.now() - this.startTime;
     const remaining = sequence.duration - elapsed;
     if (remaining > 0) {
       await this.sleep(remaining);
