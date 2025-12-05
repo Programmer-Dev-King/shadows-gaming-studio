@@ -17,7 +17,7 @@ export default function ProjectsPage() {
             PROJECTS
           </h1>
           <p className="text-icy-blue text-lg">Legendary games in development</p>
-        </motion. div>
+        </motion.div>
 
         {/* Coming Soon Scroll */}
         <motion.div
@@ -57,7 +57,7 @@ export default function ProjectsPage() {
                   <div className="w-16 h-16 border-2 border-neon-cyan rounded-full" />
                 </div>
               </div>
-            </motion. div>
+            </motion.div>
 
             <motion.h2
               animate={{ scale: [1, 1.05, 1] }}
@@ -120,7 +120,7 @@ export default function ProjectsPage() {
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0. 2 }}
+                transition={{ delay: i * 0.2 }}
                 className="glass rounded-lg p-6 border-2 border-cursed-purple/50 opacity-60"
               >
                 <div className="w-full h-40 bg-gradient-to-br from-cursed-purple/20 to-shadow-black rounded mb-4 flex items-center justify-center">
@@ -128,7 +128,7 @@ export default function ProjectsPage() {
                 </div>
                 <h4 className="text-xl font-bold text-cursed-purple/50 mb-2">Secret Project {i}</h4>
                 <p className="text-silver-white/50 text-sm">Details locked until release announcement</p>
-              </motion. div>
+              </motion.div>
             ))}
           </div>
         </div>

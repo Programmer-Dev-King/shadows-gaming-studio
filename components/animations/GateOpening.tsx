@@ -27,7 +27,7 @@ export const GateOpening: React. FC<GateOpeningProps> = ({
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-shadow-black overflow-hidden z-50">
       {/* Background Mist */}
-      <motion. div
+      <motion.div
         className="absolute inset-0 opacity-50"
         style={{
           background: 'radial-gradient(ellipse at center, #1F6BFF 0%, transparent 70%)',

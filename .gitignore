@@ -33,3 +33,16 @@ prisma/dev.db-journal
 
 # OS
 Thumbs.db
+
+# Large original images (>1MB)
+# Place originals in public/images/originals/ for local development
+# but don't commit large files to git
+public/images/originals/*.jpg
+public/images/originals/*.jpeg
+public/images/originals/*.png
+public/images/originals/*.webp
+!public/images/originals/.gitkeep
+
+# Generated images are also excluded (regenerate with tools/generate-images.sh)
+public/images/generated/
+!public/images/generated/.gitkeep

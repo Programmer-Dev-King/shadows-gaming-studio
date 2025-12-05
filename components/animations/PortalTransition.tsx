@@ -8,12 +8,12 @@ interface PortalTransitionProps {
   onComplete?: () => void;
 }
 
-export const PortalTransition: React. FC<PortalTransitionProps> = ({
+export const PortalTransition: React.FC<PortalTransitionProps> = ({
   isActive,
   onComplete,
 }) => {
   useEffect(() => {
-    if (isActive) {
+    if (isActive && onComplete) {
       const timer = setTimeout(onComplete, 1600);
       return () => clearTimeout(timer);
     }
@@ -35,14 +35,14 @@ export const PortalTransition: React. FC<PortalTransitionProps> = ({
           initial={{ scale: 0, rotate: 0 }}
           animate={{ scale: 1, rotate: 360 }}
           exit={{ scale: 0 }}
-          transition={{ duration: 1. 6 }}
+          transition={{ duration: 1.6 }}
           style={{
             boxShadow: '0 0 30px #1F6BFF',
           }}
         />
 
         {/* Middle Ring */}
-        <motion. div
+        <motion.div
           className="absolute w-72 h-72 border-2 border-neon-cyan rounded-full"
           initial={{ scale: 0, rotate: 360 }}
           animate={{ scale: 1, rotate: 0 }}
@@ -66,10 +66,10 @@ export const PortalTransition: React. FC<PortalTransitionProps> = ({
         />
 
         {/* Center Glow */}
-        <motion. div
+        <motion.div
           className="absolute w-32 h-32 bg-gradient-radial from-jin-woo-blue to-transparent rounded-full"
           initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 1, 0. 5] }}
+          animate={{ opacity: [0, 1, 0.5] }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.6 }}
         />

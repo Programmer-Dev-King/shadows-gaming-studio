@@ -53,10 +53,10 @@ export default function AboutPage() {
           />
 
           {/* Center Glow */}
-          <motion. div
+          <motion.div
             className="absolute w-32 h-32 bg-gradient-radial from-jin-woo-blue to-transparent rounded-full"
             initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 1, 0. 5] }}
+            animate={{ opacity: [0, 1, 0.5] }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.6 }}
           />
@@ -67,7 +67,7 @@ export default function AboutPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 0.3, 0] }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1. 6 }}
+            transition={{ duration: 1.6 }}
           />
         </div>
       )}
@@ -97,7 +97,7 @@ export default function AboutPage() {
               className="text-icy-blue text-lg"
             >
               The Story of Shadows Gaming Studio
-            </motion. p>
+            </motion.p>
           </div>
 
           {/* Who We Are */}
@@ -146,10 +146,10 @@ export default function AboutPage() {
           </motion.div>
 
           {/* Core Values */}
-          <motion. div
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0. 8 }}
+            transition={{ delay: 0.8 }}
             className="glass rounded-lg p-12 border-2 border-chakra-orange mb-12"
           >
             <h2 className="text-3xl font-bold text-chakra-orange mb-8">Our Core Values</h2>

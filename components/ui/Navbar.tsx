@@ -93,7 +93,7 @@ export const Navbar: React.FC = () => {
                 </motion.button>
               </Link>
               <motion.button
-                whileHover={{ scale: 1. 05 }}
+                whileHover={{ scale: 1.05 }}
                 onClick={() => signOut()}
                 className="px-4 py-2 bg-cursed-purple text-white rounded font-bold hover:shadow-lg transition-all"
               >
@@ -104,7 +104,7 @@ export const Navbar: React.FC = () => {
             <>
               <Link href="/login" className="hidden md:block">
                 <motion.button
-                  whileHover={{ scale: 1. 05 }}
+                  whileHover={{ scale: 1.05 }}
                   className="px-4 py-2 border-2 border-jin-woo-blue text-jin-woo-blue rounded font-bold hover:bg-jin-woo-blue/10 transition-all"
                 >
                   LOGIN

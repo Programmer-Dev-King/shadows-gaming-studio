@@ -1,0 +1,298 @@
+/* styles/hud-theme.css */
+/* SAO-inspired HUD panel styles */
+
+:root {
+  /* HUD Colors */
+  --hud-primary: #1F6BFF;
+  --hud-secondary: #37F8FF;
+  --hud-accent: #6F2BFF;
+  --hud-success: #8EFFC1;
+  --hud-warning: #FF6B18;
+  --hud-bg: rgba(5, 7, 10, 0.8);
+  --hud-border: rgba(31, 107, 255, 0.5);
+}
+
+/* HUD Panel Base */
+.hud-panel {
+  position: relative;
+  background: var(--hud-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--hud-border);
+  overflow: hidden;
+}
+
+/* Corner Decorations */
+.hud-panel::before,
+.hud-panel::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--hud-primary);
+}
+
+.hud-panel::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.hud-panel::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+/* HUD Header */
+.hud-header {
+  font-family: 'Oxanium', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--hud-secondary);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--hud-border);
+  margin-bottom: 1rem;
+}
+
+/* HUD Value Display */
+.hud-value {
+  font-family: 'Oxanium', monospace;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--hud-primary);
+  text-shadow: 0 0 10px var(--hud-primary);
+}
+
+/* HUD Progress Bar */
+.hud-progress {
+  height: 4px;
+  background: rgba(31, 107, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hud-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--hud-primary), var(--hud-secondary));
+  border-radius: 2px;
+  transition: width 0.5s ease-out;
+}
+
+.hud-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  animation: hudShine 2s infinite;
+}
+
+@keyframes hudShine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* HUD Status Indicator */
+.hud-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Oxanium', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.hud-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: hudPulse 1.5s ease-in-out infinite;
+}
+
+.hud-status-dot.active {
+  background: var(--hud-success);
+  box-shadow: 0 0 10px var(--hud-success);
+}
+
+.hud-status-dot.warning {
+  background: var(--hud-warning);
+  box-shadow: 0 0 10px var(--hud-warning);
+}
+
+.hud-status-dot.error {
+  background: #ff4444;
+  box-shadow: 0 0 10px #ff4444;
+}
+
+@keyframes hudPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* HUD Grid */
+.hud-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.hud-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.hud-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.hud-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* HUD List */
+.hud-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hud-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(31, 107, 255, 0.1);
+}
+
+.hud-list-item:last-child {
+  border-bottom: none;
+}
+
+/* HUD Button */
+.hud-button {
+  font-family: 'Oxanium', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--hud-primary);
+  background: transparent;
+  color: var(--hud-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.hud-button:hover {
+  background: rgba(31, 107, 255, 0.1);
+  box-shadow: 0 0 20px rgba(31, 107, 255, 0.3);
+}
+
+.hud-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(31, 107, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.hud-button:hover::before {
+  left: 100%;
+}
+
+/* HUD Scan Line */
+.hud-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--hud-secondary),
+    transparent
+  );
+  animation: hudScanline 3s linear infinite;
+}
+
+@keyframes hudScanline {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+/* HUD Notification */
+.hud-notification {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  max-width: 300px;
+  background: var(--hud-bg);
+  border: 1px solid var(--hud-primary);
+  padding: 1rem;
+  z-index: 100;
+  animation: hudSlideIn 0.3s ease-out;
+}
+
+@keyframes hudSlideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive HUD */
+@media (max-width: 768px) {
+  .hud-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .hud-grid-3 {
+    grid-template-columns: 1fr;
+  }
+  
+  .hud-value {
+    font-size: 1.75rem;
+  }
+}
