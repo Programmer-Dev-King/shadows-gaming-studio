@@ -47,3 +47,5 @@ public/images/originals/*.avif
 
 # Tool generated files
 tools/generate-images.mjs
+tsconfig.tsbuildinfo
+package-lock.json
