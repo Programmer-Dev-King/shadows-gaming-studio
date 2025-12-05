@@ -35,11 +35,12 @@ const authConfig: NextAuthConfig = {
           return null;
         }
 
+        // Return user object compatible with NextAuth
         return {
           id: user.id,
           email: user.email,
           name: user.name,
-          role: user.role,
+          role: user.role.toLowerCase() as 'user' | 'admin',
         };
       },
     }),
@@ -48,7 +49,7 @@ const authConfig: NextAuthConfig = {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id as string;
-        token.role = (user as { role?: string }).role || '';
+        token.role = (user as { role?: string }).role || 'user';
       }
       return token;
     },

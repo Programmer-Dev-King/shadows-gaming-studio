@@ -2,23 +2,24 @@
 node_modules/
 .pnp
 .pnp.js
+package-lock.json
 
 # Testing
 coverage/
-. nyc_output/
+.nyc_output/
 
 # Production
-. next/
+.next/
 out/
 dist/
 build/
 
 # Misc
 .DS_Store
-*. pem
-. env
+*.pem
+.env
 .env.local
-. env.*. local
+.env.*.local
 .vscode/
 .idea/
 
@@ -33,6 +34,10 @@ prisma/dev.db-journal
 
 # OS
 Thumbs.db
+
+# TypeScript build artifacts
+*.tsbuildinfo
+next-env.d.ts
 
 # Large original images (>1MB)
 # Place originals in public/images/originals/ for local development
