@@ -30,7 +30,7 @@ export const SummoningSequenceAdvanced: React.FC<SummoningSequenceAdvancedProps>
       { time: duration, phase: 'complete' as const },
     ];
 
-    timeline.forEach(({ time, ph }) => {
+    timeline.forEach(({ time, phase: ph }) => {
       setTimeout(() => {
         setPhase(ph);
         if (ph === 'complete') {

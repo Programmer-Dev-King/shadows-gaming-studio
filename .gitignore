@@ -5,20 +5,20 @@ node_modules/
 
 # Testing
 coverage/
-. nyc_output/
+.nyc_output/
 
 # Production
-. next/
+.next/
 out/
 dist/
 build/
 
 # Misc
 .DS_Store
-*. pem
-. env
+*.pem
+.env
 .env.local
-. env.*. local
+.env.*.local
 .vscode/
 .idea/
 
@@ -33,3 +33,17 @@ prisma/dev.db-journal
 
 # OS
 Thumbs.db
+
+# Generated images (run npm run generate-images)
+public/images/generated/
+
+# Large original images (store externally)
+public/images/originals/*.png
+public/images/originals/*.jpg
+public/images/originals/*.jpeg
+public/images/originals/*.webp
+public/images/originals/*.avif
+!public/images/originals/.gitkeep
+
+# Tool generated files
+tools/generate-images.mjs

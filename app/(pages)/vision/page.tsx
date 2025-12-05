@@ -13,7 +13,7 @@ export default function VisionPage() {
       { time: 1400, phase: 'complete' as const },
     ];
 
-    timeline.forEach(({ time, ph }) => {
+    timeline.forEach(({ time, phase: ph }) => {
       setTimeout(() => setPhase(ph), time);
     });
   }, []);
